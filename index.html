@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Туннелеры</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+    <!-- передвижения, крутые функции -->
+    <div id="additional_function">
+        <span id="currentTime"></span>
+        <script>
+            setInterval(function() {
+                let currentTime = new Date().toLocaleTimeString('ru-RU', { timeZone: 'Europe/Moscow' });
+                document.getElementById('currentTime').innerHTML = currentTime;
+            });
+        </script>
+    </div>
+    
+    <div id="tunnelers">
+        
+        
+        <!-- шапка -->
+        <div id="http://d.zaix.ru/pCKe.png">
+            <center>
+                <img id="http://d.zaix.ru/pCKe.png" src="http://d.zaix.ru/pCKe.png">
+                <h1>Туннелеры</h1>
+                <br>
+                <div id="url_war">
+                    <a class="u_war" href="https://catwar.su/cw3">Игровая</a> |
+                    <a class="u_war" href="https://catwar.su">Мой кот/кошка</a> |
+                    <a class="u_war" href="https://catwar.su/blog14264">Блог Туннелеров</a>
+                    <br>
+                </div>
+            </center>
+            
+            <!-- сбор -->
+            <div id="gather">
+                <br>
+                <hr>
+                <h2>СБОР</h2>
+                <hr>
+                <br>
+                <!-- заметка дня -->
+                <div id="note">
+                    <center><b>Сегодня</b> <span id="day_note"></span></center>
+                    <br>
+                    <script>
+                        let now = new Date();
+                        let noteDay = document.getElementById("day_note");
+                        if (now.getDay() == 0)  
+                          noteDay.innerHTML = "вс: в итогах укажи смену карты + прикрепи карту!";
+                      if (now.getDay() == 1)  
+                          noteDay.innerHTML = "пн: прикрепи карту!";
+                      if (now.getDay() == 2)  
+                          noteDay.innerHTML = "вт: прикрепи карту!";
+                      if (now.getDay() == 3)  
+                          noteDay.innerHTML = "ср: прикрепи карту!";
+                      if (now.getDay() == 4)  
+                          noteDay.innerHTML = "чт: прикрепи карту!";
+                      if (now.getDay() == 5)  
+                          noteDay.innerHTML = "пт: прикрепи карту!";
+                      if (now.getDay() == 6)  
+                       noteDay.innerHTML = "сб: прикрепи карту!";
+               </script>
+           </div>
+           
+           <!-- текстовое поле и кнопки быстрого ввода -->
+           <table>
+            <tr>
+                <td>
+                    <textarea id="gather_text"></textarea>
+                    <script>
+                        gather_text.value = localStorage.getItem('gather_text');
+                        gather_text.oninput = () => {
+                            localStorage.setItem('gather_text', gather_text.value)
+                        };
+                    </script>
+                </td>
+                <td>
+                    <h3>Кнопки сбора</h3>
+                    <br> 
+                    <div id="button_gather">
+                        <button id="drobi">Дроби</button>
+                        <button id="g_uch">Участки - чел (План 1)</button>
+                        <button id="y_uch">Участки - чел (План 2)</button>
+                        <button id="uuu">Ленивый Гло</button>
+                        <button id="razd">Раздача</button>
+                        <button id="smena">Смена карты</button>
+                        <button id="it_day_g">Итоги дня (План 1)</button>
+                        <button id="it_day_y">Итоги дня (План 2)</button>
+                    </div>
+                    <br>
+                    <div id="button_name">
+                        <h3>Участники</h3>
+                        <center><input type="text" id="search" onkeyup="searchFunction()" placeholder="Поиск" title="Поиск" maxlength="1"></center>
+                        <div id="list_name">
+                            <ul id="name">
+                            <li><br><b><a>З</a></b><br>
+                                <button id="id_1171777">Закатоликая</button><br>
+                            </li>
+                            <li><br><b><a>И</a></b><br>
+                                <button id="id_915229">Ик</button><br>
+                                <button id="id_1123851">Искажённая Болью</button><br>
+                                <button id="id_1371415">Искреннее Сочувствие</button><br>
+                            </li>
+                            <li><br><b><a>К</a></b><br>
+                                <button id="id_757822">Княженика</button><br>
+                            </li>
+                            <li><br><b><a>Л</a></b><br>
+                                <button id="id_1279598">Лебедекрылый</button><br>
+                                <button id="id_636190">Легковерный Шалунишка</button><br>
+                                <button id="id_1298701">Лазурная Синева</button><br>
+                            </li>
+                            <li><br><b><a>Н</a></b><br>
+                                <button id="id_1313504">Надеющийся</button><br>
+                            </li>
+                            <li><br><b><a>О</a></b><br>
+                                <button id="id_1233802">Огнехвостый</button><br>
+                                <button id="id_1370050">Отчаявшийся</button><br>
+                            </li>
+                            <li><br><b><a>П</a></b><br>
+                                <button id="id_1210276">Паутина Лжи</button><br>
+                                <button id="id_1124675">Потерянная Душа</button><br>
+                                <button id="id_1318922">Пионовый</button><br>
+                                <button id="id_211729">Полуночная Разбойница</button><br>
+                                <button id="id_1386781">Предрассветный</button><br>
+                                <button id="id_1058831">Призрак</button><br>
+                            </li>
+                            <li><br><b><a>Р</a></b><br>
+                                <button id="id_1382199">Разрушающий</button><br>
+                                <button id="id_1378548">Рассветная</button><br>
+                            </li>
+                            <li><br><b><a>С</a></b><br>
+                                <button id="id_1276481">Спасающая Души</button><br>
+                                <button id="id_1359262">Спящий Совёнок</button><br>
+                            </li>
+                            <li><br><b><a>Т</a></b><br>
+                                <button id="id_1191564">Тайностная</button><br>
+                                <button id="id_842128">Тучка</button><br>
+                            </li>
+                            <li><br><b><a>Ц</a></b><br>
+                                <button id="id_748150">Цветущий Сумрак</button><br>
+                            </li>
+                            <li><br><b><a>Ч</a></b><br>
+                                <button id="id_1258308">Чёрный Пёс</button><br>
+                            </li>
+                            <li><br><b><a>Ш</a></b><br>
+                                <button id="id_1206150">Шептунья</button><br>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <script>
+        //поиск
+        function searchFunction() {
+  let input, filter, ul, li, a, i;
+  input = document.getElementById("search");
+  filter = input.value.toUpperCase();
+  ul = document.getElementById("name");
+  li = ul.getElementsByTagName("li");
+
+  for (i = 0; i < li.length; i++) {
+    a = li[i].getElementsByTagName("a")[0];
+    if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
+    }
+  }
+}
+        //быстрый набор
+        $("#razd").click(function(){$("#gather_text").val($("#gather_text").val() + "❗ Итоги и раздача в n минут")});
+        $("#smena").click(function(){$("#gather_text").val($("#gather_text").val() + "❗СМЕНА КАРТЫ❗")});
+        $("#it_day_g").click(function(){$("#gather_text").val($("#gather_text").val() + `Итоги дня
+ участок: +;
+ участок: +.
+Общее количество паутины за день: n.
+Ответственный за паутину: Чёрный Пёс, Потерянная Душа, Спящий Совёнок.
+
+Разбирайте участки: 1-2, 3-4, 5-6, 7-8, 9-10, 11-12, 13-14, 15-16.
+`)});
+        $("#it_day_y").click(function(){$("#gather_text").val($("#gather_text").val() + `Итоги дня
+ участок: +;
+ участок: +.
+Общее количество паутины за день: n.
+Ответственный за паутину: Чёрный Пёс, Потерянная Душа, Спящий Совёнок.
+
+Разбирайте участки: 1-2, 3-4, 5-6, 7-8, 9-10, 11-12, 13-14, 15-16, 17-18.
+`)});
+        $("#mog_popr").click(function(){$("#gather_text").val($("#gather_text").val() + "@all го на сбор! можете попросить: ")});
+        $("#g_uch").click(function(){$("#gather_text").val($("#gather_text").val() + `1 и 2 - 
+3 и 4 - 
+5 и 6 - 
+7 и 8 - 
+9 и 10 - 
+11 и 12 - 
+13 и 14 - 
+15 и 16 - 
+
+Ответственный за паутину: Чёрный Пёс, Потерянная Душа, Спящий Совёнок.
+`)});
+        $("#y_uch").click(function(){$("#gather_text").val($("#gather_text").val() + `1 и 2 - 
+3 и 4 - 
+5 и 6 - 
+7 и 8 - 
+9 и 10 - 
+11 и 12 - 
+13 и 14 - 
+15 и 16 - 
+17 и 18 - 
+
+Ответственный за паутину: Чёрный Пёс, Потерянная Душа, Спящий Совёнок.
+`)});
+
+ $("#drobi").click(function(){$("#gather_text").val($("#gather_text").val() + `Дробные участки занимаются в любой последовательности. 
+❗ Если с вашего участка не забрали дробный, то вы проверяете его полностью по карте, прикреплённой к раздаче. 
+
+Разбирайте участки: `)});
+
+ $("#uuu").click(function(){$("#gather_text").val($("#gather_text").val() + `1 - 
+2 - 
+3 - 
+4 - 
+5 - 
+6 - 
+7 - 
+8 - 
+9 - 
+10 - 
+11 - 
+12 - 
+13 - 
+14 - 
+15 - 
+16 - 
+17 - 
+18 - 
+
+Ответственный за паутину: Чёрный Пёс, Потерянная Душа, Спящий Совёнок.
+`)});
+
+        //участники
+        $("#id_748150").click(function(){$("#gather_text").val($("#gather_text").val() + "@id326501785 (Цветущий Сумрак);")});
+        $("#id_1171777").click(function(){$("#gather_text").val($("#gather_text").val() + "@id511745584 (Закатоликая);")});
+        $("#id_1210276").click(function(){$("#gather_text").val($("#gather_text").val() + "@id454860308 (Паутина Лжи);")});
+        $("#id_1258308").click(function(){$("#gather_text").val($("#gather_text").val() + "@id570784447 (Чёрный Пёс);")});
+        $("#id_1191564").click(function(){$("#gather_text").val($("#gather_text").val() + "@id424273784 (Тайностная);")});
+        $("#id_1279598").click(function(){$("#gather_text").val($("#gather_text").val() + "@id646166902 (Лебедекрылый);")});
+        $("#id_1124675").click(function(){$("#gather_text").val($("#gather_text").val() + "@id487775787 (Потерянная Душа);")});
+        $("#id_1276481").click(function(){$("#gather_text").val($("#gather_text").val() + "@id351680930 (Спасающая Души);")});
+        $("#id_636190").click(function(){$("#gather_text").val($("#gather_text").val() + "@id490954113 (Легковерный Шалунишка);")});
+        $("#id_1313504").click(function(){$("#gather_text").val($("#gather_text").val() + "@id631863152 (Надеющийся);")});
+        $("#id_915229").click(function(){$("#gather_text").val($("#gather_text").val() + "@id214895700 (Ик);")});
+        $("#id_1206150").click(function(){$("#gather_text").val($("#gather_text").val() + "@id408161971 (Шептунья);")});
+        $("#id_1318922").click(function(){$("#gather_text").val($("#gather_text").val() + "@id703519707 (Пионовый);")});
+        $("#id_1123851").click(function(){$("#gather_text").val($("#gather_text").val() + "@id487014987 (Искажённая Болью);")});
+        $("#id_1233802").click(function(){$("#gather_text").val($("#gather_text").val() + "@id486185356 (Огнехвостый);")});
+        $("#id_1298701").click(function(){$("#gather_text").val($("#gather_text").val() + "@id565433809 (Лазурная Синева);")});
+        $("#id_1359262").click(function(){$("#gather_text").val($("#gather_text").val() + "@id497036359 (Спящий Совёнок);")});
+        $("#id_1371415").click(function(){$("#gather_text").val($("#gather_text").val() + "@id617522349 (Искреннее Сочувствие);")});
+        $("#id_211729").click(function(){$("#gather_text").val($("#gather_text").val() + "@id575924283 (Полуночная Разбойница);")});
+        $("#id_1370050").click(function(){$("#gather_text").val($("#gather_text").val() + "@id669442391 (Отчаявшийся);")});
+        $("#id_1382199").click(function(){$("#gather_text").val($("#gather_text").val() + "@id543898544 (Разрушающий);")});
+        $("#id_1386781").click(function(){$("#gather_text").val($("#gather_text").val() + "@id606561633 (Предрассветный);")});
+        $("#id_1058831").click(function(){$("#gather_text").val($("#gather_text").val() + "@id656920609 (Призрак);")});
+        $("#id_757822").click(function(){$("#gather_text").val($("#gather_text").val() + "@id563010198 (Княженика);")});
+        $("#id_1378548").click(function(){$("#gather_text").val($("#gather_text").val() + "@id655854171 (Рассветная);")});
+        $("#id_842128").click(function(){$("#gather_text").val($("#gather_text").val() + "@id548944874 (Тучка);")});
+    </script>
+</div>
+
+<!-- калькулятор -->
+<div id="calculator_block">
+    <br>
+    <hr>
+    <h2>СЧЁТЧИК ВРЕМЕНИ</h2>
+    <hr>
+    <br>
+    <center>
+    <form id="calculator_form">
+            <table>
+                <tr><td style="font-weight: bold;">Основной счётчик</td></tr>
+                <tr>
+                    <td>
+                        <input type="text" id="per" placeholder="Количество переходов">
+                        <input type="button" value="Посчитать" onclick="calculatorOsn(this.form)">
+                    </td>
+                </tr>
+                <tr><td><span class="error" id="error_1"></span></td></tr>
+                <tr>
+                    <td><input class="result" type="text" id="result_1" disabled>
+                    <input class="result" type="text" id="result_2" disabled><br>
+                    <input class="result" type="text" id="result_3" disabled>
+                    <input class="result" type="text" id="result_4" disabled></td>
+                </tr>
+                <tr><td style="font-weight: bold;"><br>Дополнительный счётчик</td></tr>
+                <tr>
+                    <td>
+                        <input type="text" id="per_dop" placeholder="Количество переходов">
+                        <input type="button" value="Посчитать" onclick="calculatorDop(this.form)">
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="text" id="time_per_dop" placeholder="Время перехода">
+                        <input class="result_dop" type="text" id="result_1_dop" disabled>
+                    </td>
+                </tr>
+                <tr><td><span class="error" id="error_2"></span></td></tr>
+            </table>
+    </form>
+    </center>
+</div>
+<script>
+let ordinary = 45;
+let lkey = 43;
+let stump = 41;
+let cheese = 25;
+let min = " мин. ";
+let sec = " сек.";
+let errorCalculator = "Ошибка!";
+
+function calculatorOsn(form){
+let per = form.per.value;
+
+if (per == false || isNaN(per)) {
+document.getElementById("error_1").innerHTML = errorCalculator;
+form.result_1.value = "";
+form.result_2.value = "";
+form.result_3.value = "";
+form.result_4.value = "";
+}
+
+else {
+document.getElementById("error_1").innerHTML = "";
+    
+let result_1_min = per * ordinary / 60;
+let result_1_sec = per * ordinary % 60;
+    
+let result_2_min = per * lkey / 60;
+let result_2_sec = per * lkey % 60;
+
+let result_3_min = per * stump / 60;
+let result_3_sec = per * stump % 60;
+    
+let result_4_min = per * cheese / 60;
+let result_4_sec = per * cheese % 60;
+    
+form.result_1.value = Math.floor(result_1_min) + min + Math.abs(result_1_sec) + sec + " - обычный переход";
+form.result_2.value = Math.floor(result_2_min) + min + Math.abs(result_2_sec) + sec + " - переход с клавой";
+form.result_3.value = Math.floor(result_3_min) + min + Math.abs(result_3_sec) + sec + " - переход с пнём";
+form.result_4.value = Math.floor(result_4_min) + min + Math.abs(result_4_sec) + sec + " - переход с сыром";
+}
+}
+
+function calculatorDop(form){
+let perDop = form.per_dop.value;
+let timePerDop = form.time_per_dop.value;
+
+if (perDop == false || isNaN(perDop) || timePerDop == false || isNaN(timePerDop)) {
+document.getElementById("error_2").innerHTML = errorCalculator;
+form.result_1_dop.value = "";
+}
+
+else {
+document.getElementById("error_2").innerHTML = "";
+
+let result_1_min_dop = perDop * timePerDop / 60;
+let result_1_sec_dop = perDop * timePerDop % 60;
+    
+form.result_1_dop.value = Math.floor(result_1_min_dop) + min + Math.abs(result_1_sec_dop) + sec;
+}
+}
+</script>
+
+<!-- список участников отряда -->
+<div id="list_tunnelers">
+  <center>
+     <br>
+     <hr>
+     <h2>СПИСОК ТУННЕЛЕРОВ</h2>
+     <hr>
+     <br>
+     <b>Глава отряда:</b> <a href="https://catwar.su/cat1258308">Чёрный Пёс</a> (<a href="https://vk.com/id570784447">VK</a>)<br>
+     <br>
+     <div id="list">
+      <center><span class="subtitle">Туннелеры</span></center>
+      <br><b>З</b><br>
+      <a href="https://catwar.su/cat1171777">Закатоликая</a> (<a href="https://vk.com/id511745584">VK</a>)<br>
+      <br><b>И</b><br>
+      <a href="https://catwar.su/cat915229">Ик</a> (<a href="https://vk.com/id214895700">VK</a>)<br>
+      <a href="https://catwar.su/cat1123851">Искажённая Болью</a> (<a href="https://vk.com/id487014987">VK</a>)<br>
+      <a href="https://catwar.su/cat1371415">Искреннее Сочувствие</a> (<a href="https://vk.com/id617522349">VK</a>)<br>
+      <br><b>К</b><br>
+      <a href="https://catwar.su/cat757822">Княженика</a> (<a href="https://vk.com/id563010198">VK</a>)<br>
+      <br><b>Л</b><br>
+      <a href="https://catwar.su/cat1279598">Лебедекрылый</a> (<a href="https://vk.com/id646166902">VK</a>)<br>
+      <a href="https://catwar.su/cat636190">Легковерный Шалунишка</a> (<a href="https://vk.com/id490954113">VK</a>)<br>
+      <a href="https://catwar.su/cat1298701">Лазурная Синева</a> (<a href="https://vk.com/id565433809">VK</a>)<br>
+      <br><b>Н</b><br>
+      <a href="https://catwar.su/cat1313504">Надеющийся</a> (<a href="https://vk.com/id631863152">VK</a>)<br>
+      <br><b>О</b><br>
+      <a href="https://catwar.su/cat1233802">Огнехвостый</a> (<a href="https://vk.com/id486185356">VK</a>)<br>
+      <a href="https://catwar.su/cat1370050">Отчаявшийся</a> (<a href="https://vk.com/id669442391">VK</a>)<br>
+      <br><b>П</b><br>
+      <a href="https://catwar.su/cat1210276">Паутина Лжи</a> (<a href="https://vk.com/id454860308">VK</a>)<br>
+      <a href="https://catwar.su/cat1124675">Потерянная Душа</a> (<a href="https://vk.com/id487775787">VK</a>)<br>
+      <a href="https://catwar.su/cat1318922">Пионовый</a> (<a href="https://vk.com/id703519707">VK</a>)<br>
+      <a href="https://catwar.su/cat211729">Полуночная Разбойница</a> (<a href="https://vk.com/id575924283">VK</a>)<br>
+      <a href="https://catwar.su/cat1386781">Предрассветный</a> (<a href="https://vk.com/id606561633">VK</a>)<br>
+      <a href="https://catwar.su/cat1058831">Призрак</a> (<a href="https://vk.com/id656920609">VK</a>)<br>
+      <br><b>Р</b><br>
+      <a href="https://catwar.su/cat1382199">Разрушающий</a> (<a href="https://vk.com/id543898544">VK</a>)<br>
+      <a href="https://catwar.su/cat1378548">Рассветная</a> (<a href="https://vk.com/id655854171">VK</a>)<br>
+      <br><b>С</b><br>
+      <a href="https://catwar.su/cat1276481">Спасающая Души</a> (<a href="https://vk.com/id351680930">VK</a>)<br>
+      <a href="https://catwar.su/cat1359262">Спящий Совёнок</a> (<a href="https://vk.com/id497036359">VK</a>)<br>
+      <br><b>Т</b><br>
+      <a href="https://catwar.su/cat1191564">Тайностная</a> (<a href="https://vk.com/id424273784">VK</a>)<br>
+      <a href="https://catwar.su/cat842128">Тучка</a> (<a href="https://vk.com/id548944874">VK</a>)<br>
+      <br><b>Ц</b><br>
+      <a href="https://catwar.su/cat748150">Цветущий Сумрак</a> (<a href="https://vk.com/id326501785">VK</a>)<br>
+      <br><b>Ш</b><br>
+      <a href="https://catwar.su/cat1206150">Шептунья</a> (<a href="https://vk.com/id408161971">VK</a>)<br>
+  </center>
+</div>
+</div>
+<div style="font-size: smaller; text-align: right;">Последнее обновление: 02.04</div>
+</div>
+<script>
+$("a").attr('target', '_blank');
+</script>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: century gothic;
+    background-color: #6d8082;
+    background-image: url('https://catwar.su/cw3/things/20.png');
+}
+
+h1 {
+    font-size: 19pt;
+    text-decoration: underline;
+}
+
+h2 {
+    font-size: 14pt;
+    font-weight: bold;
+    color: #B2B8D6;
+    background-color: #35363F;
+    text-align: center;
+    max-width: 70%;
+    margin: 0 auto;
+    padding: 1%;
+}
+
+h3 {
+    text-align: center;
+}
+
+hr {
+    max-width: 72%;
+    margin: 0 auto;
+}
+
+button, input[type="button"] {
+    color: #B2B8D6;
+    background-color: #35363F;
+    border: solid 1px black;
+    margin: 1px;
+    padding: 0.9%;
+}
+
+button:hover, input[type="button"]:hover {
+    color: #B2B8D6;
+    border: solid 1px #D9D9D9;
+}
+
+li {
+    list-style-type: none;
+}
+
+.subtitle {
+    font-weight: bold;
+}
+
+#additional_function {
+    padding: 1.5%;
+    background-color: #455e61;
+    position: fixed;
+    max-width: 10%;
+    color: #B2B8D6;
+    text-align: center;
+}
+
+.nav {
+    text-decoration: none;
+    color: #B2B8D6;
+    margin: 10px;
+    font-size: 30px;
+}
+
+#currentTime {
+    font-size: 20px;
+}
+
+#tunnelers {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #6d8082;
+    border-right: 2px solid #adadad;
+    border-left: 2px solid #adadad;
+}
+
+.u_war {
+    color: #000000;
+}
+
+.u_war:hover {
+    text-decoration: none;
+}
+
+#day_note {
+    font-weight: bold;
+}
+
+#gather_text {
+    background-color: #45454a;
+    color: #fff;
+    width: 450px;
+    height: 450px;
+    resize: none;
+    margin-left: 5px;
+    border: solid 1px black;
+    padding: 1px;
+    font-family: century gothic;
+    color: #c5c5c5;
+}
+
+#search {
+    color: #B2B8D6;
+    background-color: #35363F;
+    padding: 2px;
+    margin: 3px;
+}
+
+#list_name {
+        overflow: auto;
+        height: 255px;
+    }
+
+input[type="text"], .result {
+    color: #B2B8D6;
+    background-color: #35363F;
+    border: solid 1px black;
+    margin: 1.5px;
+    padding: 3px;
+    width: 220px;
+}
+
+#list_tunnelers a {
+    color: #000000;
+}
+
+#list_tunnelers a:hover {
+    text-decoration: none;
+}
+
+#list_tunnelers #list {
+    text-align: left;
+}
+
+#list {
+        width: 30%;
+    }
+
+.frozen {
+    text-decoration: line-through;
+}
+
+.error {
+    font-size: 10pt;
+    color: brown;
+    font-weight: bold;
+}
+
+@media screen and (max-device-width: 450px) {
+    
+    #additional_function {
+        max-width: 20%;
+    }
+    
+    .nav {
+        font-size: 50px;
+    }
+    
+    #currentTime {
+        font-size: 40px;
+    }
+    
+    #list {
+        width: 90%;
+    }
+    
+}        
+</style>
+</body>
+</html>
