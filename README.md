@@ -1,1 +1,1 @@
-Glosh-0.github.io
+Glosh-0.github
